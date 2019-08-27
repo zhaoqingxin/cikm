@@ -1,0 +1,6 @@
+download/
+model_dir*
+model_input*
+raw_data
+sampled_data*
+result*

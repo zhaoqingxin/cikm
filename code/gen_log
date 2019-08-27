@@ -1,0 +1,89 @@
+nohup: ignoring input
+WARNING:root:
+DeepCTR version 0.5.2 detected. Your version is 0.5.1.
+Use `pip install -U deepctr` to upgrade.Changelog: https://github.com/shenweichen/DeepCTR/releases/tag/v0.5.2
+20190614  start time :  2019-07-30 20:13:13
+sess ok, time :  2019-07-30 20:14:04
+data read ok, time :  2019-07-30 20:14:30
+data transform ok, time :  2019-07-30 20:17:30
+data write ok, time :  2019-07-30 20:18:50
+20190614 ---- 337
+20190614_neg  start time :  2019-07-30 20:18:50
+sess ok, time :  2019-07-30 20:19:45
+data read ok, time :  2019-07-30 20:20:12
+data transform ok, time :  2019-07-30 20:23:18
+data write ok, time :  2019-07-30 20:24:20
+20190614_neg ---- 329
+20190615  start time :  2019-07-30 20:24:20
+sess ok, time :  2019-07-30 20:25:26
+data read ok, time :  2019-07-30 20:26:00
+data transform ok, time :  2019-07-30 20:29:56
+data write ok, time :  2019-07-30 20:30:28
+20190615 ---- 367
+20190615_neg  start time :  2019-07-30 20:30:28
+sess ok, time :  2019-07-30 20:32:36
+data read ok, time :  2019-07-30 20:33:12
+data transform ok, time :  2019-07-30 20:37:10
+data write ok, time :  2019-07-30 20:37:40
+20190615_neg ---- 431
+20190616  start time :  2019-07-30 20:37:40
+sess ok, time :  2019-07-30 20:39:52
+data read ok, time :  2019-07-30 20:40:33
+data transform ok, time :  2019-07-30 20:46:02
+data write ok, time :  2019-07-30 20:46:46
+20190616 ---- 545
+20190616_neg  start time :  2019-07-30 20:46:46
+sess ok, time :  2019-07-30 20:49:21
+data read ok, time :  2019-07-30 20:50:06
+data transform ok, time :  2019-07-30 20:55:18
+data write ok, time :  2019-07-30 20:55:56
+20190616_neg ---- 550
+20190617  start time :  2019-07-30 20:55:56
+sess ok, time :  2019-07-30 20:58:19
+data read ok, time :  2019-07-30 20:58:51
+data transform ok, time :  2019-07-30 21:02:52
+data write ok, time :  2019-07-30 21:03:22
+20190617 ---- 446
+20190617_neg  start time :  2019-07-30 21:03:22
+sess ok, time :  2019-07-30 21:05:32
+data read ok, time :  2019-07-30 21:06:09
+data transform ok, time :  2019-07-30 21:10:10
+data write ok, time :  2019-07-30 21:10:39
+20190617_neg ---- 437
+20190618  start time :  2019-07-30 21:10:39
+sess ok, time :  2019-07-30 21:12:57
+data read ok, time :  2019-07-30 21:13:37
+data transform ok, time :  2019-07-30 21:18:33
+data write ok, time :  2019-07-30 21:19:13
+20190618 ---- 513
+20190618_neg  start time :  2019-07-30 21:19:13
+sess ok, time :  2019-07-30 21:21:56
+data read ok, time :  2019-07-30 21:22:42
+data transform ok, time :  2019-07-30 21:27:40
+data write ok, time :  2019-07-30 21:28:19
+20190618_neg ---- 546
+20190619  start time :  2019-07-30 21:28:19
+sess ok, time :  2019-07-30 21:30:28
+data read ok, time :  2019-07-30 21:30:53
+data transform ok, time :  2019-07-30 21:33:44
+data write ok, time :  2019-07-30 21:34:04
+20190619 ---- 345
+20190619_neg  start time :  2019-07-30 21:34:04
+sess ok, time :  2019-07-30 21:35:53
+data read ok, time :  2019-07-30 21:36:18
+data transform ok, time :  2019-07-30 21:39:10
+data write ok, time :  2019-07-30 21:39:30
+20190619_neg ---- 325
+20190620  start time :  2019-07-30 21:39:30
+sess ok, time :  2019-07-30 21:40:35
+data read ok, time :  2019-07-30 21:41:00
+data transform ok, time :  2019-07-30 21:43:53
+data write ok, time :  2019-07-30 21:44:13
+20190620 ---- 282
+20190620_neg  start time :  2019-07-30 21:44:13
+sess ok, time :  2019-07-30 21:46:08
+data read ok, time :  2019-07-30 21:46:33
+data transform ok, time :  2019-07-30 21:49:23
+data write ok, time :  2019-07-30 21:49:42
+20190620_neg ---- 329
+gen din input done
