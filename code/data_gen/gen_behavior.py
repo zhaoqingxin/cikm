@@ -95,7 +95,7 @@ if __name__ == "__main__":
   
   cache_user_id = "1084105303"
   cache_item_id_list = []
-  with open("../download/ECommAI_ubp_round2_train","r") as f:
+  with open("../download/ECommAI_ubp_round2_train_sort","r") as f:
     with open('../sampled_data/user_hehavior_unique',"w") as wf:
       behavior = f.readline()
       while behavior:
