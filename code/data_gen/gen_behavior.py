@@ -93,7 +93,7 @@ if __name__ == "__main__":
   if not os.path.exists('../sampled_data/'):
     os.mkdir('../sampled_data/')
   
-  cache_user_id = "1084105303"
+  cache_user_id = "100000027"
   cache_item_id_list = []
 
   start = time.time()
