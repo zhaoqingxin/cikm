@@ -6,10 +6,12 @@ import pandas as pd
 from sklearn.preprocessing import LabelEncoder
 import gc
 from joblib import Parallel, delayed
-import time
+import time,datetime
 
 date_list = ["20190810","20190811","20190812","20190813","20190814","20190815","20190816","20190817","20190818","20190819","20190820",]
 
+def show_time():
+  return datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 # def gen_session_list_din(uid, t):
 #   session_list = [[] for i in range(len(date_list))]
   
@@ -41,6 +43,7 @@ date_list = ["20190810","20190811","20190812","20190813","20190814","20190815","
 #   gc.collect()
 
 if __name__ == "__main__":
+  print("start program: ",show_time())
   user_behavior_dict = {}
   read_num = 0
   start = time.time()
@@ -61,19 +64,23 @@ if __name__ == "__main__":
         i = int(date[-2:])-10
         user_behavior_dict[user_id][i].append(item_id)
       read_num += 1
-      if read_num % 100000 == 0 :
+      if read_num % 10000000 == 0 :
         end = time.time()
         print(read_num,"----",int(end-start))
         start = time.time()
       behavior = f.readline()
+  print("cache user behavior dict: ",show_time())
 
   if not os.path.exists('../sampled_data/'):
     os.mkdir('../sampled_data/')
   pd.to_pickle(user_behavior_dict, '../sampled_data/user_hehavior.pkl')
-  
+  print("write user behavior dict: ",show_time())
+
   for user_id in user_behavior_dict.keys():
     user_behavior_dict[user_id] = list(np.unique(np.concatenate(user_behavior_dict[user_id])))
+  print("cache user behavior unique dict: ",show_time())
   pd.to_pickle(user_behavior_dict, '../sampled_data/user_hehavior_unique.pkl')
+  print("write user behavior unique dict: ",show_time())
 
 
 
