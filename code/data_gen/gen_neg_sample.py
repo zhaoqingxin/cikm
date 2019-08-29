@@ -3,7 +3,6 @@ import numpy as np
 import pandas as pd
 import time,datetime
 import random
-import 
 
 def show_time():
   return datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
@@ -22,7 +21,7 @@ with open("../sampled_data/user_hehavior_unique","r") as f:
     b = behavior.strip().split("\t")
     user_behavior[b[0]] = b[1].split(",")
     behavior = f.readline()
-    
+
 print("user_behavior length: ", len(user_behavior))
 user_abc = user_behavior.keys()
 print(user_behavior[user_abc[8765]])
@@ -46,6 +45,9 @@ def num4(num):
   s = "000" + str(num)
   return s[-4:]
 start = time.time()
+
+if not os.path.exists('../sampled_data/sharding'):
+  os.mkdir('../sampled_data/sharding')
 
 print("start gen neg_sample: ", show_time())
 with open("../download/ECommAI_ubp_round2_train","r") as f:
