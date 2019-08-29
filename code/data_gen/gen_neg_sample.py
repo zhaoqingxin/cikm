@@ -3,6 +3,7 @@ import numpy as np
 import pandas as pd
 import time,datetime
 import random
+import 
 
 def show_time():
   return datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
@@ -11,7 +12,9 @@ date_list = ["20190810","20190811","20190812","20190813","20190814","20190815","
 
 print("cache behavior and items: ", show_time())
 
-user_behavior = pd.read_pickle("../sampled_data/user_hehavior_unique.pkl")
+# user_behavior = pd.read_pickle("../sampled_data/user_hehavior_unique.pkl")
+with open("../sampled_data/user_hehavior_unique.pkl","rb") as f:
+  user_behavior = pickle.load(f)
 print("user_behavior length: ", len(user_behavior))
 user_abc = user_behavior.keys()
 print(user_behavior[user_abc[8765]])
