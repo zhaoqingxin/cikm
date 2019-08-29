@@ -7,6 +7,7 @@ from sklearn.preprocessing import LabelEncoder
 import gc
 from joblib import Parallel, delayed
 import time,datetime
+import pickle
 
 date_list = ["20190810","20190811","20190812","20190813","20190814","20190815","20190816","20190817","20190818","20190819","20190820",]
 
@@ -73,13 +74,17 @@ if __name__ == "__main__":
 
   if not os.path.exists('../sampled_data/'):
     os.mkdir('../sampled_data/')
-  pd.to_pickle(user_behavior_dict, '../sampled_data/user_hehavior.pkl')
+  # pd.to_pickle(user_behavior_dict, '../sampled_data/user_hehavior.pkl')
+  with open('../sampled_data/user_hehavior.pkl',"wb") as f:
+    pickle.dump(user_behavior_dict,f)
   print("write user behavior dict: ",show_time())
 
   for user_id in user_behavior_dict.keys():
     user_behavior_dict[user_id] = list(np.unique(np.concatenate(user_behavior_dict[user_id])))
   print("cache user behavior unique dict: ",show_time())
-  pd.to_pickle(user_behavior_dict, '../sampled_data/user_hehavior_unique.pkl')
+  # pd.to_pickle(user_behavior_dict, '../sampled_data/user_hehavior_unique.pkl')
+  with open('../sampled_data/user_hehavior_unique.pkl','wb') as f:
+    pickle.dump(user_behavior_dict,f)
   print("write user behavior unique dict: ",show_time())
 
 
