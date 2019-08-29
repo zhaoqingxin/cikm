@@ -95,6 +95,9 @@ if __name__ == "__main__":
   
   cache_user_id = "1084105303"
   cache_item_id_list = []
+
+  start = time.time()
+  read_num = 0
   with open("../download/ECommAI_ubp_round2_train_sort","r") as f:
     with open('../sampled_data/user_hehavior_unique',"w") as wf:
       behavior = f.readline()
@@ -109,4 +112,9 @@ if __name__ == "__main__":
         # action = b[2]
         # date = b[3]
         cache_item_id_list.append(item_id)
+        read_num += 1
+        if read_num % 10000000 == 0 :
+          end = time.time()
+          print(read_num,"----",int(end-start))
+          start = time.time()
       wf.write(user_id + "\t" + ",".join(list(np.unique(cache_item_id_list))))
