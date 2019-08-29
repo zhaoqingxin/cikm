@@ -43,6 +43,7 @@ def show_time():
 #   pd.to_pickle(user_hist_session, '../sampled_data/user_hist_session_raw_id.pkl')
 #   gc.collect()
 
+"""
 if __name__ == "__main__":
   print("start program: ",show_time())
   user_behavior_dict = {}
@@ -86,6 +87,25 @@ if __name__ == "__main__":
   with open('../sampled_data/user_hehavior_unique.pkl','wb') as f:
     pickle.dump(user_behavior_dict,f)
   print("write user behavior unique dict: ",show_time())
+"""
 
-
-
+if __name__ == "__main__":
+  if not os.path.exists('../sampled_data/'):
+    os.mkdir('../sampled_data/')
+  
+  cache_user_id = "1084105303"
+  cache_item_id_list = []
+  with open("../download/ECommAI_ubp_round2_train","r") as f:
+    with open('../sampled_data/user_hehavior_unique',"w") as wf:
+      behavior = f.readline()
+      while behavior:
+        b = behavior.strip().split("\t")
+        user_id = b[0]
+        if user_id != cache_user_id:
+          wf.write(user_id + "\t" + ",".join(list(np.unique(cache_item_id_list))))
+          cache_user_id = user_id
+          cache_item_id_list = []
+        item_id = b[1]
+        # action = b[2]
+        # date = b[3]
+        cache_item_id_list.append(item_id)
