@@ -93,19 +93,21 @@ if __name__ == "__main__":
   if not os.path.exists('../sampled_data/'):
     os.mkdir('../sampled_data/')
   
-  cache_user_id = "100000027"
-  cache_item_id_list = []
+  
 
   start = time.time()
   read_num = 0
   with open("../download/ECommAI_ubp_round2_train_sort","r") as f:
     with open('../sampled_data/user_hehavior_unique',"w") as wf:
       behavior = f.readline()
+      b = behavior.strip().split("\t")
+      cache_user_id = b[0]
+      cache_item_id_list = []
       while behavior:
         b = behavior.strip().split("\t")
         user_id = b[0]
         if user_id != cache_user_id:
-          wf.write(user_id + "\t" + ",".join(list(np.unique(cache_item_id_list)))+"\n")
+          wf.write(cache_user_id + "\t" + ",".join(list(np.unique(cache_item_id_list)))+"\n")
           cache_user_id = user_id
           cache_item_id_list = []
         item_id = b[1]
@@ -118,4 +120,4 @@ if __name__ == "__main__":
           print(read_num,"----",int(end-start))
           start = time.time()
         behavior = f.readline()
-      wf.write(user_id + "\t" + ",".join(list(np.unique(cache_item_id_list)))+"\n")
+      wf.write(cache_user_id + "\t" + ",".join(list(np.unique(cache_item_id_list)))+"\n")
