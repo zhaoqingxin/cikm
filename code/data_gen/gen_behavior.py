@@ -117,4 +117,5 @@ if __name__ == "__main__":
           end = time.time()
           print(read_num,"----",int(end-start))
           start = time.time()
+        behavior = f.readline()
       wf.write(user_id + "\t" + ",".join(list(np.unique(cache_item_id_list)))+"\n")
