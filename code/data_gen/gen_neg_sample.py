@@ -40,7 +40,7 @@ with open("../download/ECommAI_ubp_round2_train","r") as f:
     b = behavior.split("\t")
     while True:
       neg_item_index = random.randint(0,items_length-1)
-      neg_item = items[neg_item_index]
+      neg_item = items[neg_item_index].strip()
       if neg_item not in user_behavior[b[0]]:
         b[1] = neg_item
         break
