@@ -13,8 +13,16 @@ date_list = ["20190810","20190811","20190812","20190813","20190814","20190815","
 print("cache behavior and items: ", show_time())
 
 # user_behavior = pd.read_pickle("../sampled_data/user_hehavior_unique.pkl")
-with open("../sampled_data/user_hehavior_unique.pkl","rb") as f:
-  user_behavior = pickle.load(f)
+# with open("../sampled_data/user_hehavior_unique.pkl","rb") as f:
+  # user_behavior = pickle.load(f)
+user_behavior = {}
+with open("../sampled_data/user_hehavior_unique","r") as f:
+  behavior = f.readline()
+  while behavior:
+    b = behavior.strip().split("\t")
+    user_behavior[b[0]] = b[1].split(",")
+    behavior = f.readline()
+    
 print("user_behavior length: ", len(user_behavior))
 user_abc = user_behavior.keys()
 print(user_behavior[user_abc[8765]])

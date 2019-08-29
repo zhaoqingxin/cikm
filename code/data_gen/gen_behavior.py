@@ -102,7 +102,7 @@ if __name__ == "__main__":
         b = behavior.strip().split("\t")
         user_id = b[0]
         if user_id != cache_user_id:
-          wf.write(user_id + "\t" + ",".join(list(np.unique(cache_item_id_list))))
+          wf.write(user_id + "\t" + ",".join(list(np.unique(cache_item_id_list)))+"\n")
           cache_user_id = user_id
           cache_item_id_list = []
         item_id = b[1]
