@@ -109,3 +109,4 @@ if __name__ == "__main__":
         # action = b[2]
         # date = b[3]
         cache_item_id_list.append(item_id)
+      wf.write(user_id + "\t" + ",".join(list(np.unique(cache_item_id_list))))
