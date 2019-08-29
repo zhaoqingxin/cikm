@@ -1,45 +1,64 @@
 import os
 import numpy as np
 import pandas as pd
-import time
+import time,datetime
 import random
 
-date_list = ["20190610","20190611","20190612","20190613","20190614","20190615","20190616","20190617","20190618","20190619","20190620",]
+def show_time():
+  return datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
-user_sess = pd.read_pickle("../sampled_data/user_hist_session.pkl")
-for user in user_sess.keys():
-  user_sess[user] = np.unique(user_sess[user])
+date_list = ["20190810","20190811","20190812","20190813","20190814","20190815","20190816","20190817","20190818","20190819","20190820",]
 
-items = pd.read_csv("../raw_data/ECommAI_ubp_round1_item_feature",sep="\t",header=None, names=["item_id","cate_1_id","cate_id","brand_id","price"])
-items = items['item_id']
-length = len(items)-1
+print("cache behavior and items: ", show_time())
 
-data = pd.read_csv("../raw_data/ECommAI_ubp_round1_train",sep="\t",header=None, names=["user_id","item_id","behavior","date"])
+user_behavior = pd.read_pickle("../sampled_data/user_hehavior_unique.pkl")
 
-users = data["user_id"]
-neg_items = []
+with open("../sampled_data/train_items","r") as f:
+  items = f.readlines()
+items_length = len(items)
 
-print("neg item start gen----------------")
+sharding_num = 1000
+pos_sample_num = 796996580
+sample_per_file = pos_sample_num//sharding_num+1
 
+read_num = 0
+file_num = 0
+
+def num4(num):
+  s = "000" + str(num)
+  return s[-4:]
 start = time.time()
-n = 0
-for user in users:
-  while True:
-    i = random.randint(0,length)
-    item = items[i]
-    if item not in user_sess[user]:
-      assert n == len(neg_items)
-      neg_items.append(item)
-      break
-  n+=1
-  if n %1000000 == 0:
-    end = time.time()
-    print(n,"----",int(end-start))
-    start = time.time()
 
-print("neg_items length: ",len(neg_items))
-data["item_id"] = neg_items
+print("start gen neg_sample: ", show_time())
+with open("../download/ECommAI_ubp_round2_train","r") as f:
+  behavior = f.readline()
+  pos_wf = open("../sampled_data/sharding/train_pos_"+num4(file_num),"w")
+  neg_wf = open("../sampled_data/sharding/train_neg1_"+num4(file_num),"w")
+  
+  while behavior:
+    pos_wf.write(behavior)
+    b = behavior.split("\t")
+    while True:
+      neg_item_index = random.randint(0,items_length-1)
+      neg_item = items[neg_item_index]
+      if neg_item not in user_behavior[b[0]]:
+        b[1] = neg_item
+        break
+    neg_wf.write("\t".join(b))
+    read_num += 1
+    if read_num % sample_per_file == 0:
+      neg_wf.close()
+      pos_wf.close()
 
-data.to_csv('../raw_data/ECommAI_ubp_round1_train_neg',sep="\t",header=False,index=False)
+      file_num += 1
+      pos_wf = open("../sampled_data/sharding/train_pos_"+num4(file_num),"w")
+      neg_wf = open("../sampled_data/sharding/train_neg1_"+num4(file_num),"w")
+      
+      if file_num % 10 == 0 :
+        end = time.time()
+        print(file_num,"----",int(end-start))
+        start = time.time()
+    behavior = f.readline()
+print("end gen neg_sample: ", show_time())
 
 
