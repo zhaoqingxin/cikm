@@ -54,10 +54,10 @@ with open("../download/ECommAI_ubp_round2_train","r") as f:
       pos_wf = open("../sampled_data/sharding/train_pos_"+num4(file_num),"w")
       neg_wf = open("../sampled_data/sharding/train_neg1_"+num4(file_num),"w")
       
-      if file_num % 10 == 0 :
-        end = time.time()
-        print(file_num,"----",int(end-start))
-        start = time.time()
+    if read_num % 10000000 == 0 :
+      end = time.time()
+      print(file_num,"----",int(end-start))
+      start = time.time()
     behavior = f.readline()
 print("end gen neg_sample: ", show_time())
 
