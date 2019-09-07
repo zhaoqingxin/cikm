@@ -8,7 +8,7 @@ def show_time():
   return datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
 date_list = ["20190810","20190811","20190812","20190813","20190814","20190815","20190816","20190817","20190818","20190819","20190820",]
-
+sample_num_list = [65368790,69331936,68009514,69297954,70775731,72092699,70915971,74486605,77946262,77092968,81678150]
 print("cache behavior and items: ", show_time())
 
 # user_behavior = pd.read_pickle("../sampled_data/user_hehavior_unique.pkl")
@@ -45,10 +45,10 @@ if not os.path.exists('../sampled_data/sharding'):
   os.mkdir('../sampled_data/sharding')
 
 print("start gen neg_sample: ", show_time())
-for date in date_list:
+for index,date in enumerate(date_list):
   start = time.time()
   sharding_num = 100
-  pos_sample_num = 796996580
+  pos_sample_num = sample_num_list[index]
   sample_per_file = pos_sample_num//sharding_num+1
 
   read_num = 0
