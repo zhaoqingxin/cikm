@@ -74,8 +74,8 @@ for index,date in enumerate(date_list):
         pos_wf.close()
 
         file_num += 1
-        pos_wf = open("../sampled_data/sharding/train_pos_"+num4(file_num),"w")
-        neg_wf = open("../sampled_data/sharding/train_neg1_"+num4(file_num),"w")
+        pos_wf = open("../sampled_data/sharding/train_pos_"+date+"_"+num4(file_num),"w")
+        neg_wf = open("../sampled_data/sharding/train_neg1_"+date+"_"+num4(file_num),"w")
         
       if file_num % 10000000 == 0 :
         end = time.time()
